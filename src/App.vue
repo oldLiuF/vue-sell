@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <v-header></v-header>
+    <v-header :seller="seller"></v-header>
     <div class="tab">
       <div class="tab-item">
         <router-link to="/goods">商品</router-link>
@@ -19,16 +19,34 @@
 </template>
 
 <script>
+import api from './api/index'
 import header from '@/components/header/header'
 
 export default {
   name: 'App',
+  data () {
+    return {
+      seller: {}
+    }
+  },
+
   mounted () {
     // this.$nextTick(() => {
     // 设备像素比
     var dpr = window.devicePixelRatio
     console.log('dpr: ' + dpr)
+    this.initData()
     // })
+  },
+
+  methods: {
+    async initData () {
+      let result = await api.get('api/seller')
+      if (result.success) {
+        this.seller = result.data.data
+      }
+      console.log(result)
+    }
   },
   components: {
     'v-header': header
