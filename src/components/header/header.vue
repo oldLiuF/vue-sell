@@ -6,8 +6,8 @@
       </div>
       <div class="content">
         <div class="title">
-          <div class="brand"></div>
-          <div class="name">{{seller.name}}</div>
+          <span class="brand"></span>
+          <span class="name">{{seller.name}}</span>
         </div>
         <div class="description">
           {{seller.description}}/{{seller.deliveryTime}}分钟送达
@@ -75,6 +75,11 @@ export default {
 .content {
   display: inline-block;
   font-size: 14px;
+  .title {
+    line-height: 16px;
+    font-size: 16px;
+    font-weight: bold;
+  }
 }
 
 .supports {

@@ -41,7 +41,7 @@ export default {
 
   methods: {
     async initData () {
-      let result = await api.get('api/seller')
+      let result = await api.get('api/test')
       if (result.success) {
         this.seller = result.data.data
       }
